@@ -1,7 +1,9 @@
 # Asus-P8Z68-V-LX-Hackintosh
 
-Hackintosh for [ASUS P8Z68-V LX](https://www.asus.com/Motherboards/P8Z68V_LX/) motherboard using macOS 10.12 Sierra.
-This is a minimal guide that fits my hardware configuration.
+UPDATED TO macOS 10.13 High Sierra
+
+Hackintosh for [ASUS P8Z68-V LX](https://www.asus.com/Motherboards/P8Z68V_LX/) motherboard using macOS 10.13 High Sierra.
+This is a minimal guide for personal use that fits my hardware configuration.
 
 Intel Z68 chipset, LGA1155 socket.
 Supports 2nd gen. ([32 nm - Sandy Bridge](http://en.wikipedia.org/wiki/Sandy_Bridge)) Intel Core CPUs.
