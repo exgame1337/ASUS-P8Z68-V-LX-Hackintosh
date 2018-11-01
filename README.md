@@ -50,17 +50,9 @@ Sources:
 
 My tests (sleep, wake, shutdown...) have concluded that there is no need to generate a patched `DSDT.aml` file.
 
-Sources:
-- [How to edit your own DSDT with MaciASL](http://www.macbreaker.com/2014/03/how-to-edit-your-own-dsdt-with-maciasl.html)
-- [Creating a DSDT using MaciASL](http://pjalm.com/forums/index.php?topic=3.0)
-- [Fork of MaciASL by RehabMan](https://github.com/RehabMan/OS-X-MaciASL-patchmatic)
-- [ASUS DSDT patches repository for MaciASL by PJALM](http://maciasl.sourceforge.net/pjalm/asus/) ([available files](http://maciasl.sourceforge.net/pjalm/asus/.maciasl))
-- [olarila.com - DSDT patches by motherboard](http://olarila.com/forum/packs.php)
-- [Beta Asus Sandy Bridge Sleep/Wake Fix](http://www.tonymacx86.com/dsdt/50036-beta-asus-sandy-bridge-sleep-wake-fix.html)
-
 ## MultiBeast
 
-Using version 9.x
+Using version 10.4.X
 
 - Quick Start > UEFI Boot Mode
 - Drivers > Audio > Realtek ALCxxx > ALC887/888b
@@ -68,8 +60,8 @@ Using version 9.x
 - Drivers > Network > Realtek > RealtekRTL8111
 - Drivers > USB > 3rd Party USB 3.0
 - Bootloaders > Clover UEFI Boot Mode
-- Customize > System Definitions > iMac > iMac 12,2
-- Customize > SSDT Options > Sandy Bridge Core i7 (or Core i5 depending on your CPU)
+- Customize > System Definitions > iMac > iMac 14,2
+- Customize > SSDT Options > Sandy Bridge Core i5 (or Core i7 depending on your CPU)
 
 Sources:
 - [ASUS P8Z68-V PRO/GEN3 Hackintosh - Multibeast 8.x](https://github.com/DavidGoldman/ASUS-P8Z68-V-PRO-GEN3-Hackintosh/blob/1b4146189ed79fee06d1c3515e524af2fb5e792e/README.md#multibeast-8x)
@@ -98,29 +90,12 @@ If you own a SSD you should enable TRIM support:
 sudo trimforce enable
 ```
 
-Sources:
-- [How to Enable TRIM on Third Party SSDs in Mac OS X with trimforce](http://osxdaily.com/2015/10/29/use-trimforce-trim-ssd-mac-os-x/)
-- [Enable TRIM for Third-Party SSDs in OS X with a Terminal Command](http://lifehacker.com/enable-trim-for-third-party-ssds-in-os-x-with-a-termina-1714978260)
+## Disable Gatekeeper
 
-## Nvidia Web Driver
+```Shell
+sudo spctl --master-disable
+```
 
-Can be disabled using `nv_disable=1` at boot time.
-
-### OsxAptioFix2Drv-64.efi vs OsxAptioFixDrv-64.efi
-
-When using Nvidia Web Driver with a [MSI GeForce GTX 970 GAMING 4G](https://www.msi.com/Graphics-card/GTX-970-GAMING-4G.html), I randomly get `Error allocating 0x800 pages` at boot time in verbose mode.
-I couldn't fix this issue.
-
-I've tried to replace `OsxAptioFix2Drv-64.efi` by `OsxAptioFixDrv-64.efi` without success: I then always get `Error - requested memory exceeds our allocated relocation block`.
-
-Tested using Clover v2.3k r3766 (packaged with MultiBeast 9.0.1), r3974 and r3998.
-
-See [issue #2](https://github.com/tkrotoff/ASUS-P8Z68-V-LX-Hackintosh/issues/2) for possible solutions.
-
-Sources:
-- [NVIDIA Releases Alternate Graphics Drivers for macOS Sierra 10.12.3](https://www.tonymacx86.com/threads/nvidia-releases-alternate-graphics-drivers-for-macos-sierra-10-12-3-367-15-10-35.213122/)
-- [Big List of Solutions for El Capitan Install Problems](https://www.tonymacx86.com/threads/big-list-of-solutions-for-el-capitan-install-problems.173991/#CategoryFreeze)
-- [ASUS P8Z68-V PRO/GEN3 Hackintosh - Prohibited Sign on Boot](https://github.com/DavidGoldman/ASUS-P8Z68-V-PRO-GEN3-Hackintosh/blob/1b4146189ed79fee06d1c3515e524af2fb5e792e/README.md#prohibited-sign-on-boot)
 
 ## BIOS boot entry
 
@@ -142,26 +117,6 @@ bcfg boot rm N # Remove a boot entry given its number N in the list
 exit # Get back to Clover main screen
 reset # Restart the computer
 ```
-
-Sources:
-- [[GUIDE] ASRock H97 Pro4 Yosemite with Clover UEFI Installation](http://www.insanelymac.com/forum/topic/302041-guide-asrock-h97-pro4-yosemite-with-clover-uefi-installation/)
-- [ASUS P8z68 won't boot without USB-stick](http://www.tonymacx86.com/yosemite-desktop-support/158425-asus-p8z68-wont-boot-without-usb-stick.html)
-- [Booting UEFI with Clover on Asus P8Z68-V/GEN3](https://www.reddit.com/r/hackintosh/comments/21ywt4/booting_uefi_with_clover_on_asus_p8z68vgen3/)
-- [[How To] Remove Extra Clover BIOS Boot Entries & Prevent Further Problems](http://www.insanelymac.com/forum/topic/308637-how-to-remove-extra-clover-bios-boot-entries-prevent-further-problems/)
-
-## Performance
-
-Using [Geekbench](http://www.primatelabs.com/geekbench/) with an Intel Core i7-2700K @ 3.50 GHz
-- Version 3 32bits: > 3000 (single-core), > 11000 (multi-core)
-- Version 4 64bits: > 3600 (single-core), > 11000 (multi-core)
-
-Using [Unigine Valley Benchmark 1.0](https://unigine.com/products/benchmarks/valley/) in 1920x1080/medium with a GTX 970, you should get a score > 2900
-
-Using Cinebench R15: OpenGL > 60 fps, CPU > 600 cb
-
-## Other tools and links
-
-- [RTL8111 Driver for OS X](https://github.com/Mieze/RTL8111_driver_for_OS_X): RealtekRTL8111.kext source code
 
 ## License
 
